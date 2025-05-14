@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: fitness-data-manager
+    env: python
+    plan: free # Or your desired plan
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn src.main:app"
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+      - key: DATABASE_URL
+        value: "postgresql+psycopg://mohamed_masoud_user:WIYp6Lsh7NP5lSjlssYG72ACgqkgUEGA@dpg-d0ian7odl3ps738adesg-a.oregon-postgres.render.com/mohamed_masoud"
+      - key: FLASK_APP
+        value: "src.main"
+      - key: FLASK_ENV
+        value: "production"
+      - key: PYTHONPATH
+        value: "."
